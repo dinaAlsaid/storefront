@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardMedia, Button, Typography, CardActionArea, CardActions, CardContent } from "@material-ui/core";
 import { connect } from 'react-redux';
 import { ChangeCategory } from '../store/reducers/categories.js';
+import { addToCart } from '../store/reducers/cart.js'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,7 +43,7 @@ function Products(props) {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary">
+              <Button size="small" color="primary" onClick={()=>{props.addToCart(item)}}>
                 Add to Cart
         </Button>
               <Button size="small" color="primary">
@@ -61,6 +62,6 @@ function Products(props) {
 const mapStateToProps = (state) => {
   return { products: state.products };
 };
-const mapDispatchToProps = { ChangeCategory };
+const mapDispatchToProps = { ChangeCategory , addToCart};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);

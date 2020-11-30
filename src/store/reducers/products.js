@@ -15,17 +15,11 @@ export const productsReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case 'CHANGE':
-      const products = initialState.products.filter((product) => product.category === payload);
+      const products = initialState.products.filter((product) => product.category === payload && product.inStock>0);
       return { products };
     // case 'RESET':
     //   return {products:initialState.product}
     default:
   }
   return state;
-};
-export const ChangeCategory = (active) => {
-  return {
-    type: 'CHANGE',
-    payload: active,
-  };
 };
