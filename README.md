@@ -21,7 +21,3 @@
 #### UML
 
 ![UML](./lab37.png)
-
-#### notes
-
-not finished
