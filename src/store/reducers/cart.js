@@ -7,21 +7,16 @@ export const cartReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case 'ADDTOCART':
-      let cart = [...state.cart];
-      let cartItems = state.cartItems;
-      if (state.cart.length === 0) {
-        cartItems = state.cartItems + 1
+      let cart = [];
+      let cartItems = state.cartItems + 1
+      let productsNames = state.cart.map((item)=>{
+        return item.name;
+      })
+      if(productsNames.includes(payload.name)){
+        cart = [...state.cart];
+      }else {
         cart = [...state.cart, payload];
       }
-      cart.forEach((item) => {
-        console.log(item);
-        if (item.name !== payload.name) {
-          cartItems = state.cartItems + 1
-          cart = [...state.cart, payload];
-
-        }
-      })
-
       return { cart, cartItems }
     default:
       return state;

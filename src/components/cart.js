@@ -1,14 +1,40 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Button, Menu, MenuItem } from "@material-ui/core";
 
-function Cart(props){
-  return(
+function Cart(props) {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  return (
     <>
-      <ul>
+      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
         CART ({props.cart.cartItems})
-        {props.cart.cart.map((item)=>{
-          return(<li>{item.name}</li>)
+</Button>
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        {props.cart.cart.map((item) => {
+          return (
+            <MenuItem 
+            onClick={handleClose} 
+            key={item.name}>{item.name}</MenuItem>
+
+          )
         })}
+
+      </Menu>
+      <ul>
+
       </ul>
     </>
   )

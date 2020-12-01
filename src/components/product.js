@@ -4,6 +4,7 @@ import { Card, CardMedia, Button, Typography, CardActionArea, CardActions, CardC
 import { connect } from 'react-redux';
 import { ChangeCategory } from '../store/reducers/categories.js';
 import { addToCart } from '../store/reducers/cart.js'
+import { reduceStock } from '../store/reducers/products.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,7 +30,10 @@ function Products(props) {
       {props.products.products.map((item) => {
         return (
 
-          <Card className={classes.card} variant="outlined">
+          <Card 
+          className={classes.card} 
+          variant="outlined" 
+          key={item.name}>
             <CardActionArea>
               <CardMedia
                 className={classes.media}
@@ -43,7 +47,11 @@ function Products(props) {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary" onClick={()=>{props.addToCart(item)}}>
+              <Button size="small" color="primary" 
+              onClick={()=>{
+                props.addToCart(item)
+                props.reduceStock(item)
+                }}>
                 Add to Cart
         </Button>
               <Button size="small" color="primary">
@@ -62,6 +70,6 @@ function Products(props) {
 const mapStateToProps = (state) => {
   return { products: state.products };
 };
-const mapDispatchToProps = { ChangeCategory , addToCart};
+const mapDispatchToProps = { ChangeCategory , addToCart, reduceStock };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
