@@ -1,5 +1,6 @@
 import { Typography, AppBar, Toolbar, Button } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
+import Cart from './cart.js'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,7 +24,7 @@ function Header() {
           <Typography variant="h6" className={classes.title}>
             Store
     </Typography>
-          <Button color="inherit">Login</Button>
+          <Cart />
         </Toolbar>
       </AppBar>
     </>

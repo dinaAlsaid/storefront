@@ -24,7 +24,12 @@ function Category(props){
     <>
     <Typography align='center' className={classes.nav}>
       {props.categories.categories.map((item)=>{
-        return(<Link onClick={()=>props.ChangeCategory(item.name)} className={classes.link}>{item.name}</Link>);
+        return(
+        <Link 
+        onClick={()=>props.ChangeCategory(item.name)} 
+        className={classes.link}
+        key={item.name}
+        >{item.name}</Link>);
       })}
     </Typography>
     <Typography variant='h2' className={classes.banner} align='center'>{props.categories.activeCategory}</Typography>

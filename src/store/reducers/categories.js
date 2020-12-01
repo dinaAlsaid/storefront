@@ -15,7 +15,6 @@ export const categoriesReducer = (state = initialState, action) => {
     default:
       return {...state,activeCategory:'All'}
   }
-  // return state;
 
 };
 
