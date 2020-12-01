@@ -2,9 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardMedia, Button, Typography, CardActionArea, CardActions, CardContent } from "@material-ui/core";
 import { connect } from 'react-redux';
-import { ChangeCategory } from '../store/reducers/categories.js';
-import { addToCart } from '../store/reducers/cart.js'
-import { reduceStock } from '../store/reducers/products.js';
+import { ChangeCategory, addToCart, reduceStock} from '../store/reducers/actions.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {

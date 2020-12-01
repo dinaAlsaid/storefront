@@ -8,7 +8,11 @@ export const cartReducer = (state = initialState, action) => {
   switch (type) {
     case 'ADDTOCART':
       let cart = [];
-      let cartItems = state.cartItems + 1
+      let cartItems = state.cartItems
+      if(payload.inStock>0){
+        cartItems = cartItems + 1
+
+      }
       let productsNames = state.cart.map((item)=>{
         return item.name;
       })
@@ -19,12 +23,6 @@ export const cartReducer = (state = initialState, action) => {
       }
       return { cart, cartItems }
     default:
-      return state;
+      return {...state};
   }
-};
-export const addToCart = (product) => {
-  return {
-    type: 'ADDTOCART',
-    payload: product,
-  };
 };

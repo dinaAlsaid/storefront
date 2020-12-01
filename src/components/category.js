@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography,Link } from "@material-ui/core";
 import { connect } from 'react-redux';
-import { ChangeCategory } from '../store/reducers/categories.js';
+import { ChangeCategory } from '../store/reducers/actions.js';
 
 const useStyles = makeStyles((theme) => ({
   banner:{

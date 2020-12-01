@@ -13,27 +13,22 @@ const initialState = {
 //Reducer
 export const productsReducer = (state = initialState, action) => {
   const { type, payload } = action;
-  let products = [];
+  let products= state.products;
   switch (type) {
     case 'CHANGE':
       products = initialState.products.filter((product) => product.category === payload && product.inStock > 0);
       return { products };
     case 'REDUCESTOCK':
-      products = initialState.products.map((product) => {
+      // products = initialState.products.filter((product) => product.category === payload.category && product.inStock > 0);
+      let productsRed = products.map((product) => {
         if (product.name === payload.name && product.inStock !== 0) {
           product.inStock -= 1;
         }
         return product;
       });
-      return { products };
+      return { products:productsRed };
     default:
   }
   return state;
 };
 
-export const reduceStock = (product) => {
-  return {
-    type: 'REDUCESTOCK',
-    payload: product,
-  }
-}
